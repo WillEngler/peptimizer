@@ -8,7 +8,7 @@ import warnings
 warnings.filterwarnings("ignore")
 warnings.filterwarnings("ignore",category=FutureWarning)
 
-import plots
+from . import plots
 
 import pandas as pd
 import numpy as np
