@@ -25,8 +25,8 @@ from tensorflow import keras
 from tensorflow.keras.layers import Lambda
 from tensorflow.keras import backend as K
 
-from utils.utils_cpp import cpp_predictor
-from utils.utils_synthesis import synthesis_feature_transformation, synthesis_predictor
+from ..utils_cpp import cpp_predictor
+# from ..utils_synthesis import synthesis_feature_transformation, synthesis_predictor
 
 class Activation:
     def __init__(self, **kwargs):
@@ -96,22 +96,22 @@ class Activation:
                 seq_max = self.__seq_max
                 )
         
-        elif self.__mode == 'synthesis':
-            self._feature_transformation = synthesis_feature_transformation.FeatureTransformation(
-                pre_chain_smiles_path = kwargs.get('pre_chain_smiles_path'),
-                amino_acid_smiles_path = kwargs.get('amino_acid_smiles_path'),
-                mode = 'predict', model_type = 'minimal',
-                fp_radius = self.__fp_radius,
-                fp_bits = self.__fp_bits,
-                seq_max = self.__seq_max,
-                transformation_functions_path = kwargs.get('transformation_functions_path')
-            )
+        # elif self.__mode == 'synthesis':
+        #     self._feature_transformation = synthesis_feature_transformation.FeatureTransformation(
+        #         pre_chain_smiles_path = kwargs.get('pre_chain_smiles_path'),
+        #         amino_acid_smiles_path = kwargs.get('amino_acid_smiles_path'),
+        #         mode = 'predict', model_type = 'minimal',
+        #         fp_radius = self.__fp_radius,
+        #         fp_bits = self.__fp_bits,
+        #         seq_max = self.__seq_max,
+        #         transformation_functions_path = kwargs.get('transformation_functions_path')
+        #     )
             
-            self.predictor = synthesis_predictor.Predictor(
-                model_path = self.__model_path,
-                scaling_functions_path = kwargs.get('scaling_functions_path'),
-                model_type = 'minimal'
-            )
+        #     self.predictor = synthesis_predictor.Predictor(
+        #         model_path = self.__model_path,
+        #         scaling_functions_path = kwargs.get('scaling_functions_path'),
+        #         model_type = 'minimal'
+        #     )
             
         
     def __target_category_loss_output_shape(self, input_shape):
