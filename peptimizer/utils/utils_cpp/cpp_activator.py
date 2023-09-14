@@ -8,9 +8,8 @@ import warnings
 warnings.filterwarnings("ignore")
 warnings.filterwarnings("ignore",category=FutureWarning)
 
-import activator
-import plots
-from utils.utils_cpp import cpp_predictor
+from ..utils_common import activator
+from ..utils_common import plots
 
 class Activation:
     def __init__(self, **kwargs):

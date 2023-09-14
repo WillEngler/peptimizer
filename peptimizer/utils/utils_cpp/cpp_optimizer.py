@@ -8,8 +8,8 @@ import warnings
 warnings.filterwarnings("ignore")
 warnings.filterwarnings("ignore",category=FutureWarning)
 
-from calc_charge import net_charge
-import genetic_mutations
+from ..utils_common.calc_charge import net_charge
+from ..utils_common import genetic_mutations
 
 import numpy as np
 import pandas as pd

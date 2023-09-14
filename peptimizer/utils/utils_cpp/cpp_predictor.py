@@ -8,9 +8,9 @@ import warnings
 warnings.filterwarnings("ignore",category=DeprecationWarning)
 warnings.filterwarnings("ignore",category=FutureWarning)
 
-import fingerprint_2d as fingerprint
-import plots
-from calc_charge import net_charge
+from ..utils_common import fingerprint_2d as fingerprint
+from ..utils_common import plots
+from ..utils_common.calc_charge import net_charge
 
 import pandas as pd
 import numpy as np
@@ -334,7 +334,7 @@ class Predictor:
         model.add(Dropout(self.model_params['dropout']))
         model.add(Dense(1, activation='linear'))
 
-        optimizer = Adam(
+        optimizer = tf.keras.optimizers.legacy.Adam(
             lr=self.model_params['opt_lr'], 
             beta_1=self.model_params['opt_beta_1'], 
             beta_2=self.model_params['opt_beta_2'], 
