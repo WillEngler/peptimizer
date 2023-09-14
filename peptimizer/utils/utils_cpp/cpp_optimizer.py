@@ -17,7 +17,7 @@ import json
 import textdistance
 import random
 import math
-from utils.utils_cpp import cpp_predictor
+from . import cpp_predictor
 
 class Optimizer:
     def __init__(self, **kwargs):
